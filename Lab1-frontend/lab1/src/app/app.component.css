@@ -1,0 +1,28 @@
+.main-section {
+
+    width: 50%;
+    margin: 50px auto;
+
+}
+
+.main-section .title {
+
+    color: #484848;
+    font-size: 250%;
+    text-align: center;
+
+}
+
+.main-section .object-container {
+
+    width: 50%;
+    margin: 10px auto;
+    border: 2px solid silver;
+    padding: 10px;
+    border-radius: 15px;
+
+}
+
+.main-section .object-container p {
+    font-size: 120%;
+}
