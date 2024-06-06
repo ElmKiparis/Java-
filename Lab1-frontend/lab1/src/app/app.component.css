@@ -1,6 +1,6 @@
 .main-section {
 
-    width: 50%;
+    width: 70%;
     margin: 50px auto;
 
 }
@@ -15,7 +15,10 @@
 
 .main-section .object-container {
 
-    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 70%;
     margin: 10px auto;
     border: 2px solid silver;
     padding: 10px;
@@ -23,6 +26,62 @@
 
 }
 
-.main-section .object-container p {
+.main-section .object-container .object-image {
+
+    width: 96px;
+    height: 96px;
+
+}
+
+.main-section .object-container .object-info p {
     font-size: 120%;
+}
+
+.main-section .object-container .object-file-upload {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.main-section .update-object-form {
+
+    width: 30%;
+    margin: 50px auto;
+    border: 2px dashed silver;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 130%;
+
+}
+
+.main-section .update-object-form .form-group {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: 10px 0;
+
+}
+
+.main-section .update-object-form button {
+
+    display: block;
+    margin: 20px auto;
+
+}
+
+.main-section .uml-diagram-link {
+
+    display: block;
+    margin: 50px;
+    text-align: center;
+    font-size: 150%;
+    color: #3030f0;
+
+}
+
+.main-section .update-object-form button:hover, .main-section .uml-diagram-link:hover {
+    cursor: pointer;
 }

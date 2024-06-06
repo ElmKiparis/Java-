@@ -13,22 +13,25 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String name;
     private int age;
+    private String avatarFilename;
 
     public Person() {}
 
-    public Person(String name, int age) {
+    public Person(int id, String name, int age, String avatarFilename) {
+        this.id = id;
         this.name = name;
         this.age = age;
+        this.avatarFilename = avatarFilename;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -46,6 +49,14 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getAvatarFilename() {
+        return avatarFilename;
+    }
+
+    public void setAvatarFilename(String avatarFilename) {
+        this.avatarFilename = avatarFilename;
     }
 
     @Override

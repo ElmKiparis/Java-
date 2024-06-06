@@ -3,8 +3,37 @@
   <h1 class="title"> {{ title }} </h1>
 
   <div class="object-container">
-    <p> <strong> Name: </strong> {{ object.name }} </p>
-    <p> <strong> Age: </strong> {{ object.age }} </p>
+
+    <img class="object-image" src="{{ staticFilesPath }}/uploads/{{ object.avatarFilename }}">
+
+    <div class="object-info">
+      <p> <strong> Name: </strong> {{ object.name }} </p>
+      <p> <strong> Age: </strong> {{ object.age }} </p>
+    </div>
+
+    <div class="object-file-upload">
+      <input type="file" (change)="onFileSelected($event)" multiple>
+      <button (click)="onUpload()"> Upload Avatar </button>
+    </div>
+
   </div>
+
+  <div class="update-object-form">
+
+    <div class="form-group">
+      <label for="name"> Name: </label>
+      <input type="text" id="name" [value]="object.name" placeholder="Name" (change)="onChangeName($event)">
+    </div>
+    
+    <div class="form-group">
+      <label for="age"> Age: </label>
+      <input type="number" id="age" [value]="object.age" placeholder="Age" min="0" (change)="onChangeAge($event)">
+    </div>
+
+    <button (click)="onSubmit()"> Save </button>
+
+  </div>
+
+  <a class="uml-diagram-link" href="{{ staticFilesPath }}/static/uml.png" target="_blank"> UML Diagram </a>
 
 </section>
