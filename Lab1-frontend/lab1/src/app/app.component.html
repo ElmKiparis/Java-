@@ -2,35 +2,80 @@
 
   <h1 class="title"> {{ title }} </h1>
 
-  <div class="object-container">
+  <div class="object-list">
 
-    <img class="object-image" src="{{ staticFilesPath }}/uploads/{{ object.avatarFilename }}">
+    @for (object of objects; track object) {
 
-    <div class="object-info">
-      <p> <strong> Name: </strong> {{ object.name }} </p>
-      <p> <strong> Age: </strong> {{ object.age }} </p>
-    </div>
+      <div class="object-container">
 
-    <div class="object-file-upload">
-      <input type="file" (change)="onFileSelected($event)" multiple>
-      <button (click)="onUpload()"> Upload Avatar </button>
-    </div>
+        @if (object.avatarFilename) {
+          <img class="object-image" src="{{ staticFilesPath }}/uploads/{{ object.avatarFilename }}">
+        } @else {
+          <img class="object-image" src="{{ staticFilesPath }}/static/default-avatar.png">
+        }
+    
+        <div class="object-info">
+          <p> <strong> ID: </strong> {{ object.id }} </p>
+          <p> <strong> Name: </strong> {{ object.name }} </p>
+          <p> <strong> Age: </strong> {{ object.age }} </p>
+        </div>
+    
+        <div class="object-file-upload">
+          <input type="file" (change)="onFileSelected($event)" id="upload-{{ object.id }}" multiple>
+          <button (click)="onUpload()"> Upload Avatar </button>
+          <button class="delete-button" (click)="onDelete(object.id)"> Delete </button>
+        </div>
+    
+      </div>
+
+    } @empty {
+      <p class="no-objects-title"> No people </p>
+    }
 
   </div>
 
-  <div class="update-object-form">
+  <div class="form-container">
 
-    <div class="form-group">
-      <label for="name"> Name: </label>
-      <input type="text" id="name" [value]="object.name" placeholder="Name" (change)="onChangeName($event)">
-    </div>
-    
-    <div class="form-group">
-      <label for="age"> Age: </label>
-      <input type="number" id="age" [value]="object.age" placeholder="Age" min="0" (change)="onChangeAge($event)">
-    </div>
+    <div class="object-form">
 
-    <button (click)="onSubmit()"> Save </button>
+      <h2> Add person </h2>
+
+      <div class="form-group">
+        <label for="add-name"> Name: </label>
+        <input type="text" id="add-name" placeholder="Name" (change)="onChangeNameToAdd($event)">
+      </div>
+      
+      <div class="form-group">
+        <label for="add-age"> Age: </label>
+        <input type="number" id="add-age" placeholder="Age" min="0" (change)="onChangeAgeToAdd($event)">
+      </div>
+  
+      <button (click)="onAddSubmit()"> Add </button>
+  
+    </div>
+  
+    <div class="object-form">
+
+      <h2> Update person </h2>
+  
+      <div class="form-group">
+        <label for="update-id"> ID: </label>
+        <input type="text" id="update-id" placeholder="ID" (change)="onChangeIdToUpdate($event)">
+      </div>
+  
+      <div class="form-group">
+        <label for="update-name"> Name: </label>
+        <input type="text" id="update-name" placeholder="Name" (change)="onChangeNameToUpdate($event)">
+      </div>
+      
+      <div class="form-group">
+        <label for="update-age"> Age: </label>
+        <input type="number" id="update-age" placeholder="Age" min="0" (change)="onChangeAgeToUpdate($event)">
+      </div>
+  
+      <button (click)="onUpdateSubmit()"> Update </button>
+  
+    </div>
 
   </div>
 

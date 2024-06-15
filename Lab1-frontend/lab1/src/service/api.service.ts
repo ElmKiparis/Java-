@@ -13,12 +13,20 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getObject(): Observable<any> {
+  getObjects(): Observable<any> {
     return this.http.get(`${BACKEND_URL}/object`);
   }
 
-  updateObject(formData: FormData): Observable<any> {
-    return this.http.put(`${BACKEND_URL}/object`, formData);
+  addObject(formData: FormData): Observable<any> {
+    return this.http.post(`${BACKEND_URL}/object`, formData);
+  }
+
+  updateObject(id: Number, formData: FormData): Observable<any> {
+    return this.http.put(`${BACKEND_URL}/object?id=${id}`, formData);
+  }
+
+  deleteObject(id: Number): Observable<any> {
+    return this.http.delete(`${BACKEND_URL}/object?id=${id}`);
   }
 
 }

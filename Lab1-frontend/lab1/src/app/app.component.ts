@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { ApiService } from '../service/api.service';
@@ -16,30 +16,35 @@ import { BACKEND_URL, STATIC_FILES_PATH } from './config';
 
 export class AppComponent implements OnInit {
 
-  title = 'Lab 2';
+  title = 'Lab 3';
 
   staticFilesPath = STATIC_FILES_PATH;
   backendUrl = BACKEND_URL;
 
-  object: any;
+  objects: any;
 
   selectedFiles?: FileList;
+  uploadId: string = '';
 
-  name: string = '';
-  age: string = '';
+  nameToAdd: string = '';
+  ageToAdd: string = '';
+
+  idToUpdate: string = '';
+  nameToUpdate: string = '';
+  ageToUpdate: string = '';
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.getObject().subscribe(data => {
-      this.object = data;
-      this.name = this.object.name;
-      this.age = this.object.age;
+    this.apiService.getObjects().subscribe(data => {
+      this.objects = data;
     });
   }
 
   onFileSelected(event: any): void {
     this.selectedFiles = event.target.files;
+    let splitted = event.target.getAttribute('id').split('-');
+    this.uploadId = splitted[splitted.length - 1];
   }
 
   onUpload(): void {
@@ -51,7 +56,7 @@ export class AppComponent implements OnInit {
         formData.append("files", this.selectedFiles[i]);
       }
 
-      this.apiService.updateObject(formData).subscribe(
+      this.apiService.updateObject(Number(this.uploadId), formData).subscribe(
         data => console.log('Upload successful', data),
         error => console.error('Error uploading files', error)
       );
@@ -62,22 +67,61 @@ export class AppComponent implements OnInit {
 
   }
 
-  onChangeName(event: any): void {
-    this.name = event.target.value;
+  onDelete(id: number): void {
+
+    this.apiService.deleteObject(id).subscribe(
+      data => console.log('Delete successful', data),
+      error => console.error('Error deleting object', error)
+    );
+
+    location.reload();
+
   }
 
-  onChangeAge(event: any): void {
-    this.age = event.target.value;
+  onChangeNameToAdd(event: any): void {
+    this.nameToAdd = event.target.value;
   }
 
-  onSubmit(): void {
+  onChangeAgeToAdd(event: any): void {
+    this.ageToAdd = event.target.value;
+  }
+
+  onChangeIdToUpdate(event: any): void {
+    this.idToUpdate = event.target.value;
+  }
+
+  onChangeNameToUpdate(event: any): void {
+    this.nameToUpdate = event.target.value;
+  }
+
+  onChangeAgeToUpdate(event: any): void {
+    this.ageToUpdate = event.target.value;
+  }
+
+  onAddSubmit(): void {
 
     const formData = new FormData();
 
-    formData.append('name', this.name);
-    formData.append('age', this.age);
+    formData.append('name', this.nameToAdd);
+    formData.append('age', this.ageToAdd);
 
-    this.apiService.updateObject(formData).subscribe(
+    this.apiService.addObject(formData).subscribe(
+      data => console.log('Save successful', data),
+      error => console.error('Error saving object', error)
+    );
+
+    location.reload();
+
+  }
+
+  onUpdateSubmit(): void {
+
+    const formData = new FormData();
+
+    formData.append('name', this.nameToUpdate);
+    formData.append('age', this.ageToUpdate);
+
+    this.apiService.updateObject(Number(this.idToUpdate), formData).subscribe(
       data => console.log('Save successful', data),
       error => console.error('Error saving object', error)
     );

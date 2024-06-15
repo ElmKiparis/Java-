@@ -13,38 +13,66 @@
 
 }
 
-.main-section .object-container {
+.main-section .object-list .no-objects-title {
+
+    margin-top: 40px;
+    margin-bottom: 10px;
+    color: #808080;
+    font-size: 180%;
+    text-align: center;
+
+}
+
+.main-section .object-list .object-container {
 
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 70%;
-    margin: 10px auto;
+    margin: 30px auto;
     border: 2px solid silver;
     padding: 10px;
     border-radius: 15px;
 
 }
 
-.main-section .object-container .object-image {
+.main-section .object-list .object-container .object-image {
 
     width: 96px;
     height: 96px;
 
 }
 
-.main-section .object-container .object-info p {
+.main-section .object-list .object-container .object-info p {
     font-size: 120%;
 }
 
-.main-section .object-container .object-file-upload {
+.main-section .object-list .object-container .object-file-upload {
 
     display: flex;
     flex-direction: column;
 
 }
 
-.main-section .update-object-form {
+.main-section .object-list .object-container .delete-button {
+
+    margin-top: 40px;
+    border: 2px solid #a03030;
+    padding: 5px;
+    background: #f08080;
+    border-radius: 10px;
+
+}
+
+.main-section .form-container {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.main-section .form-container .object-form {
 
     width: 30%;
     margin: 50px auto;
@@ -55,7 +83,16 @@
 
 }
 
-.main-section .update-object-form .form-group {
+.main-section .form-container .object-form h2 {
+
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #484840;
+    text-align: center;
+
+}
+
+.main-section .form-container .object-form .form-group {
 
     display: flex;
     flex-direction: row;
@@ -65,7 +102,7 @@
 
 }
 
-.main-section .update-object-form button {
+.main-section .form-container .object-form button {
 
     display: block;
     margin: 20px auto;
@@ -82,6 +119,8 @@
 
 }
 
-.main-section .update-object-form button:hover, .main-section .uml-diagram-link:hover {
+.main-section .object-list .object-container .delete-button:hover,
+.main-section .form-container .object-form button:hover,
+.main-section .uml-diagram-link:hover {
     cursor: pointer;
 }
