@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title> Lab 5 </title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" type="text/css" href="/css/index.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" href="/css/index.css" th:href="@{/css/update-person.css}">
+
+</head>
+
+<body>
+
+<h1 class="title"> Update Person </h1>
+
+<form class="update-person-form" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label for="avatar"> Avatar: </label>
+        <input type="file" id="avatar" name="avatar">
+    </div>
+
+    <div class="form-group">
+        <label for="name"> Name: </label>
+        <input type="text" id="name" name="name" th:value="${person.name}" placeholder="Name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="age"> Age: </label>
+        <input type="number" min="0" id="age" name="age" th:value="${person.age}" placeholder="Age" required>
+    </div>
+
+    <button type="submit" class="button-success"> Update </button>
+
+</form>
+
+<a class="button-info button-back" href="/"> Back </a>
+
+</body>
+
+</html>

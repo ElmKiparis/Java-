@@ -1,0 +1,61 @@
+.message {
+
+    margin: 30px;
+    font-size: 180%;
+    color: #808080;
+    text-align: center;
+
+}
+
+.object-list {
+
+    width: 70%;
+    margin: 50px auto;
+    padding: 20px;
+
+}
+
+.object-list .object-container {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+    margin: 20px auto;
+    border: 1px dashed #3838a0;
+    padding: 15px;
+    border-radius: 20px;
+
+}
+
+.object-list .object-container .image-container img {
+
+    width: 90px;
+    height: 90px;
+    margin: 0 10px;
+
+}
+
+.object-list .object-container .object-info {
+
+    margin: 0 30px;
+    font-size: 150%;
+    line-height: 1.7;
+    flex-grow: 1;
+
+}
+
+.object-list .object-container .button-container {
+
+    display: flex;
+    margin: 0 30px;
+
+}
+
+.object-list .object-container .button-container a {
+    margin: 0 20px;
+}
+
+.button-add {
+    margin: 10px auto;
+}

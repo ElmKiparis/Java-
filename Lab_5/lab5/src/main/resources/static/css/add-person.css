@@ -1,0 +1,32 @@
+.add-person-form {
+
+    width: 50%;
+    margin: 50px auto;
+    border: 2px dotted #3838a0;
+    padding: 10px;
+    border-radius: 20px;
+
+}
+
+.add-person-form .form-group {
+
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 10px auto;
+    color: #484848;
+    font-size: 150%;
+
+}
+
+.add-person-form .form-group * {
+    padding: 5px;
+}
+
+.add-person-form button {
+    margin: 20px auto;
+}
+
+.button-back {
+    margin: 50px auto;
+}

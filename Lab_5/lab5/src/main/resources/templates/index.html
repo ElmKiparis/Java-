@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+
+        <title> Lab 5 </title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <link rel="stylesheet" type="text/css" href="/css/index.css" th:href="@{/css/main.css}">
+        <link rel="stylesheet" type="text/css" href="/css/index.css" th:href="@{/css/index.css}">
+
+    </head>
+
+    <body>
+
+        <h1 class="title"> Lab 5 </h1>
+
+        <div class="no-objects-message" th:if="${#lists.size(persons) == 0}">
+            <p class="message"> No people </p>
+        </div>
+
+        <div class="object-list" th:unless="${#lists.size(persons) == 0}">
+
+            <p class="message" th:text="${#lists.size(persons) + ' people'}"/>
+
+            <div class="object-container" th:each="person : ${persons}">
+
+                <div class="image-container" th:if="${person.avatar_filename == null}">
+                    <img th:src="${static_files_url + '/static/default-avatar.png'}" th:alt="${person.name}">
+                </div>
+                <div class="image-container" th:unless="${person.avatar_filename == null}">
+                    <img th:src="${static_files_url + '/uploads/' + person.avatar_filename}" th:alt="${person.name}">
+                </div>
+
+                <div class="object-info">
+                    <strong> Name: </strong> <span th:text="${person.name}"/> <br>
+                    <strong> Age: </strong> <span th:text="${person.age}"/>
+                </div>
+
+                <div class="button-container">
+                    <a class="button-info" th:href="${'/person/' + person.id + '/update'}"> Update </a>
+                    <a class="button-danger" th:href="${'/person/' + person.id + '/delete'}"> Delete </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <a class="button-success button-add" href="/person/add"> Add Person </a>
+
+    </body>
+
+</html>

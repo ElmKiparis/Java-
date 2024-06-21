@@ -1,0 +1,86 @@
+.title {
+
+    width: 50%;
+    margin: 50px auto;
+    font-size: 300%;
+    color: #5080ff;
+    text-align: center;
+    transition: all 0.5s ease;
+
+}
+
+.button-info, .button-success, .button-danger {
+
+    display: block;
+    width: fit-content;
+    padding: 12px;
+    border-radius: 15px;
+    font-size: 125%;
+    text-decoration: none;
+    transition: all 0.5s ease;
+
+}
+
+.button-info {
+
+    border: 2px solid #303060;
+    background: #c0c0ff;
+    color: #383838;
+
+}
+
+.button-success {
+
+    border: 2px solid #305030;
+    background: #a0ffa0;
+    color: #383838;
+
+}
+
+.button-danger {
+
+    border: 2px solid #603030;
+    background: #ffa0a0;
+    color: #383838;
+
+}
+
+.button-info:hover, .button-success:hover, .button-danger:hover {
+
+    cursor: pointer;
+    transition: all 0.5s ease;
+
+}
+
+.button-info:hover {
+    background: #a0a0f0;
+}
+
+.button-success:hover {
+    background: #80e080;
+}
+
+.button-danger:hover {
+    background: #e08080;
+}
+
+.button-info:active {
+
+    background: #6060c0;
+    color: #f0f0f0;
+
+}
+
+.button-success:active {
+
+    background: #50a050;
+    color: #f0f0f0;
+
+}
+
+.button-danger:active {
+
+    background: #c05050;
+    color: #f0f0f0;
+
+}
