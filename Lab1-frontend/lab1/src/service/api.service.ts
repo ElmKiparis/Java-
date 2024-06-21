@@ -17,20 +17,20 @@ export class ApiService {
     return this.http.get(`${BACKEND_URL}/persons`);
   }
 
-  addObject(formData: FormData): Observable<any> {
-    return this.http.post(`${BACKEND_URL}/person/add`, formData);
+  addObject(person: Object): Observable<any> {
+    return this.http.post(`${BACKEND_URL}/persons`, person);
   }
 
   uploadAvatar(id: Number, formData: FormData): Observable<any> {
     return this.http.post(`${BACKEND_URL}/person/${id}/upload`, formData);
   }
 
-  updateObject(id: Number, formData: FormData): Observable<any> {
-    return this.http.put(`${BACKEND_URL}/person/${id}/update`, formData);
+  updateObject(id: Number, person: Object): Observable<any> {
+    return this.http.put(`${BACKEND_URL}/persons/${id}`, person);
   }
 
   deleteObject(id: Number): Observable<any> {
-    return this.http.delete(`${BACKEND_URL}/person/${id}/delete`);
+    return this.http.delete(`${BACKEND_URL}/persons/${id}`);
   }
 
 }

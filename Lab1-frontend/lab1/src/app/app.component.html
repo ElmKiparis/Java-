@@ -8,22 +8,34 @@
 
       <div class="object-container">
 
-        @if (object.avatar_filename) {
-          <img class="object-image" src="{{ staticFilesPath }}/uploads/{{ object.avatar_filename }}">
-        } @else {
-          <img class="object-image" src="{{ staticFilesPath }}/static/default-avatar.png">
-        }
-    
-        <div class="object-info">
-          <p> <strong> ID: </strong> {{ object.id }} </p>
-          <p> <strong> Name: </strong> {{ object.name }} </p>
-          <p> <strong> Age: </strong> {{ object.age }} </p>
+        <div class="object">
+
+          @if (object.avatar_filename) {
+            <img class="object-image" src="{{ staticFilesPath }}/uploads/{{ object.avatar_filename }}">
+          } @else {
+            <img class="object-image" src="{{ staticFilesPath }}/static/default-avatar.png">
+          }
+      
+          <div class="object-info">
+            <p> <strong> ID: </strong> {{ object.id }} </p>
+            <p> <strong> Name: </strong> {{ object.name }} </p>
+            <p> <strong> Age: </strong> {{ object.age }} </p>
+          </div>
+      
+          <div class="object-file-upload">
+            <input type="file" (change)="onFileSelected($event)" id="upload-{{ object.id }}" multiple>
+            <button (click)="onUpload()"> Upload Avatar </button>
+            <button class="delete-button" (click)="onDelete(object.id)"> Delete </button>
+          </div>
+
         </div>
-    
-        <div class="object-file-upload">
-          <input type="file" (change)="onFileSelected($event)" id="upload-{{ object.id }}" multiple>
-          <button (click)="onUpload()"> Upload Avatar </button>
-          <button class="delete-button" (click)="onDelete(object.id)"> Delete </button>
+
+        <div class="skill-list">
+  
+            @for (skill of object.skills; track skill) {
+              <div class="skill"> {{ skill.name }} </div>
+            }
+
         </div>
     
       </div>

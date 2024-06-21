@@ -25,9 +25,6 @@
 
 .main-section .object-list .object-container {
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     width: 70%;
     margin: 30px auto;
     border: 2px solid silver;
@@ -36,31 +33,56 @@
 
 }
 
-.main-section .object-list .object-container .object-image {
+.main-section .object-list .object-container .object {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.main-section .object-list .object-container .object .object-image {
 
     width: 96px;
     height: 96px;
 
 }
 
-.main-section .object-list .object-container .object-info p {
+.main-section .object-list .object-container .object .object-info p {
     font-size: 120%;
 }
 
-.main-section .object-list .object-container .object-file-upload {
+.main-section .object-list .object-container .object .object-file-upload {
 
     display: flex;
     flex-direction: column;
 
 }
 
-.main-section .object-list .object-container .delete-button {
+.main-section .object-list .object-container .object .delete-button {
 
     margin-top: 40px;
     border: 2px solid #a03030;
     padding: 5px;
     background: #f08080;
     border-radius: 10px;
+
+}
+
+.main-section .object-list .object-container .skill-list {
+
+    margin: 15px;
+    display: flex;
+    gap: 20px;
+
+}
+
+.main-section .object-list .object-container .skill-list .skill {
+
+    padding: 5px;
+    border-radius: 8px;
+    background: #a0a0a0;
+    color: #ffffff;
 
 }
 

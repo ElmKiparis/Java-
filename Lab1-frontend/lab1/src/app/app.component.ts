@@ -16,7 +16,7 @@ import { BACKEND_URL, STATIC_FILES_PATH } from './config';
 
 export class AppComponent implements OnInit {
 
-  title = 'Lab 3';
+  title = 'Lab 7';
 
   staticFilesPath = STATIC_FILES_PATH;
   backendUrl = BACKEND_URL;
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getObjects().subscribe(data => {
-      this.objects = data;
+      this.objects = data['_embedded']['persons'];
     });
   }
 
@@ -99,12 +99,12 @@ export class AppComponent implements OnInit {
 
   onAddSubmit(): void {
 
-    const formData = new FormData();
+    const person = {
+      name: this.nameToAdd,
+      age: Number(this.ageToAdd)
+    };
 
-    formData.append('name', this.nameToAdd);
-    formData.append('age', this.ageToAdd);
-
-    this.apiService.addObject(formData).subscribe(
+    this.apiService.addObject(person).subscribe(
       data => console.log('Save successful', data),
       error => console.error('Error saving object', error)
     );
@@ -115,12 +115,12 @@ export class AppComponent implements OnInit {
 
   onUpdateSubmit(): void {
 
-    const formData = new FormData();
+    const person = {
+      name: this.nameToUpdate,
+      age: Number(this.ageToUpdate)
+    };
 
-    formData.append('name', this.nameToUpdate);
-    formData.append('age', this.ageToUpdate);
-
-    this.apiService.updateObject(Number(this.idToUpdate), formData).subscribe(
+    this.apiService.updateObject(Number(this.idToUpdate), person).subscribe(
       data => console.log('Save successful', data),
       error => console.error('Error saving object', error)
     );
