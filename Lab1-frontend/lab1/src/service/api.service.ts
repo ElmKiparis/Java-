@@ -14,19 +14,23 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getObjects(): Observable<any> {
-    return this.http.get(`${BACKEND_URL}/object`);
+    return this.http.get(`${BACKEND_URL}/persons`);
   }
 
   addObject(formData: FormData): Observable<any> {
-    return this.http.post(`${BACKEND_URL}/object`, formData);
+    return this.http.post(`${BACKEND_URL}/person/add`, formData);
+  }
+
+  uploadAvatar(id: Number, formData: FormData): Observable<any> {
+    return this.http.post(`${BACKEND_URL}/person/${id}/upload`, formData);
   }
 
   updateObject(id: Number, formData: FormData): Observable<any> {
-    return this.http.put(`${BACKEND_URL}/object?id=${id}`, formData);
+    return this.http.put(`${BACKEND_URL}/person/${id}/update`, formData);
   }
 
   deleteObject(id: Number): Observable<any> {
-    return this.http.delete(`${BACKEND_URL}/object?id=${id}`);
+    return this.http.delete(`${BACKEND_URL}/person/${id}/delete`);
   }
 
 }

@@ -8,8 +8,8 @@
 
       <div class="object-container">
 
-        @if (object.avatarFilename) {
-          <img class="object-image" src="{{ staticFilesPath }}/uploads/{{ object.avatarFilename }}">
+        @if (object.avatar_filename) {
+          <img class="object-image" src="{{ staticFilesPath }}/uploads/{{ object.avatar_filename }}">
         } @else {
           <img class="object-image" src="{{ staticFilesPath }}/static/default-avatar.png">
         }

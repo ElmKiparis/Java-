@@ -52,11 +52,10 @@ export class AppComponent implements OnInit {
     if (this.selectedFiles) {
 
       const formData = new FormData();
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-        formData.append("files", this.selectedFiles[i]);
-      }
+      
+      formData.append("avatar", this.selectedFiles[0]);
 
-      this.apiService.updateObject(Number(this.uploadId), formData).subscribe(
+      this.apiService.uploadAvatar(Number(this.uploadId), formData).subscribe(
         data => console.log('Upload successful', data),
         error => console.error('Error uploading files', error)
       );
